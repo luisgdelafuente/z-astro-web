@@ -1,0 +1,104 @@
+/* Blog article styles */
+.blog-article {
+  padding: 2rem 1rem;
+}
+
+@media (min-width: 768px) {
+  .blog-article {
+    padding: 3rem 2rem;
+  }
+}
+
+/* Content typography and spacing */
+.blog-content {
+  /* Headings */
+  & h2 {
+    @apply text-3xl font-display font-bold mt-12 mb-6;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-purple-600;
+  }
+
+  & h3 {
+    @apply text-2xl font-display font-bold mt-8 mb-4;
+  }
+
+  /* Paragraphs and lists */
+  & p {
+    @apply leading-relaxed mb-6;
+  }
+
+  & ul, & ol {
+    @apply my-6 ml-6;
+  }
+
+  & li {
+    @apply mb-2;
+  }
+
+  /* Code blocks */
+  & pre {
+    @apply my-8 p-4 rounded-lg bg-gray-900 text-gray-100;
+    @apply overflow-x-auto;
+  }
+
+  & code {
+    @apply font-mono text-sm;
+  }
+
+  & :not(pre) > code {
+    @apply px-1.5 py-0.5 rounded bg-gray-100 dark:bg-gray-800;
+    @apply text-primary-700 dark:text-primary-300;
+  }
+
+  /* Tables */
+  & table {
+    @apply w-full my-8 border-collapse;
+  }
+
+  & th {
+    @apply bg-gray-100 dark:bg-gray-800 p-3 text-left text-gray-900 dark:text-gray-100;
+    @apply font-display font-bold;
+  }
+
+  & td {
+    @apply p-3 border-t border-gray-200 dark:border-gray-700;
+    @apply text-gray-800 dark:text-gray-200;
+  }
+
+  /* Images */
+  & img {
+    @apply rounded-lg shadow-lg my-8;
+    @apply max-w-full h-auto;
+    @apply transform-gpu;
+  }
+
+  /* Details/Summary (FAQ sections) */
+  & details {
+    @apply my-4 border border-gray-200 dark:border-gray-700 rounded-lg;
+  }
+
+  & summary {
+    @apply p-4 cursor-pointer font-display font-medium;
+    @apply hover:bg-gray-50 dark:hover:bg-gray-800;
+  }
+
+  & details[open] summary {
+    @apply border-b border-gray-200 dark:border-gray-700;
+  }
+
+  & details > div {
+    @apply p-4;
+  }
+
+  /* Links */
+  & a {
+    @apply text-primary-600 dark:text-primary-300;
+    @apply hover:text-primary-700 dark:hover:text-primary-400;
+    @apply underline;
+  }
+
+  /* Blockquotes */
+  & blockquote {
+    @apply pl-4 my-6 border-l-4 border-primary-500;
+    @apply italic text-gray-700 dark:text-gray-300;
+  }
+}

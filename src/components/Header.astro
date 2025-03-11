@@ -1,0 +1,84 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+
+const navigation = [
+  { name: 'Home', href: '/' },
+  { name: 'Blog', href: '/blog' },
+  { name: 'Projects', href: '/projects' },
+  { name: 'About', href: '/about' },
+  { name: 'Contact', href: '/contact' },
+];
+---
+
+<header class="fixed w-full top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <a href="/" class="flex items-center">
+        <span class="text-2xl font-display font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary-500 to-purple-600">
+          AI Tech
+        </span>
+      </a>
+      
+      <div class="hidden md:flex items-center space-x-8">
+        {navigation.map(item => (
+          <a
+            href={item.href}
+            class="text-gray-900 dark:text-gray-100 hover:text-primary-700 dark:hover:text-primary-300 transition-colors font-medium"
+          >
+            {item.name}
+          </a>
+        ))}
+        <ThemeToggle />
+      </div>
+
+      <button 
+        class="md:hidden" 
+        id="menu-toggle" 
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div 
+    class="hidden md:hidden" 
+    id="mobile-menu" 
+    role="navigation" 
+    aria-label="Mobile navigation"
+  >
+    <div class="px-2 pt-2 pb-3 space-y-1">
+      {navigation.map(item => (
+        <a
+          href={item.href}
+          class="block px-3 py-2 text-base font-medium text-gray-900 dark:text-gray-100 hover:text-primary-700 dark:hover:text-primary-300"
+        >
+          {item.name}
+        </a>
+      ))}
+      <div class="px-3 py-2">
+        <ThemeToggle />
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  function updateAriaExpanded(isExpanded: boolean) {
+    menuToggle?.setAttribute('aria-expanded', isExpanded.toString());
+  }
+
+  menuToggle?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+    const isExpanded = !mobileMenu?.classList.contains('hidden');
+    updateAriaExpanded(isExpanded);
+  });
+</script>
